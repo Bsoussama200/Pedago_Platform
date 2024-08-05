@@ -8,8 +8,8 @@ provider "helm" {
       command     = "aws"
     }
   }
-
 }
+
 #aws loadbalancer controller
 resource "helm_release" "aws-load-balancer-controller" {
   name = "aws-load-balancer-controller"
@@ -55,14 +55,14 @@ locals {
 
 data "aws_caller_identity" "dev" {}
 
-data "aws_eks_cluster" "eks" {
-  name       = local.k8s.cluster
-  depends_on = [aws_eks_cluster.eks]
-}
+# data "aws_eks_cluster" "eks" {
+#   name       = local.k8s.cluster
+#   depends_on = [aws_eks_cluster.eks]
+# }
 
-data "aws_eks_cluster_auth" "aws_iam_authenticator" {
-  name = aws_eks_cluster.eks.name
-}
+# data "aws_eks_cluster_auth" "aws_iam_authenticator" {
+#   name = aws_eks_cluster.eks.name
+# }
 
 /* data "aws_route53_zone" "dev" {
   vpc_id = aws_vpc.main.id

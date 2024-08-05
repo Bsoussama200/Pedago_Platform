@@ -13,7 +13,7 @@ spec:
   selector:
     matchLabels:
       app: dev
-  replicas: 2
+  replicas: 4
   template:
     metadata:
       labels:
@@ -46,14 +46,14 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip #external dns will create record
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:304506473936:certificate/9cfe46f6-77d4-4cb3-9f05-62709ef45765
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-3:471112993112:certificate/17b89287-c39e-4673-9500-90a83f5ff282
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/group.name: dev
 spec:
   ingressClassName: alb
   rules:
-    - host: dev.cmcloudlab483.info
+    - host: test.dev.pedago.ai
       http:
         paths:
           - path: /
