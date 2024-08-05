@@ -3,7 +3,7 @@ output "eks" {
   value = <<EOF
 ###################################### KUBECONFIG ###########################################
 
-        aws eks --region us-east-1 update-kubeconfig --name ${var.cluster_name}
+        aws eks --region eu-west-3 update-kubeconfig --name ${var.cluster_name}
 
 ############################# N E T W O R K I N G ###########################################
         VPC ID                                  

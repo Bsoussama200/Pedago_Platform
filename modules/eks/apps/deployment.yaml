@@ -13,7 +13,7 @@ spec:
   selector:
     matchLabels:
       app: dev
-  replicas: 4
+  replicas: 2
   template:
     metadata:
       labels:
@@ -46,7 +46,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip #external dns will create record
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-3:471112993112:certificate/17b89287-c39e-4673-9500-90a83f5ff282
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-3:471112993112:certificate/d4626e55-6eca-44fc-837a-4ee7b6702aa8
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/group.name: dev

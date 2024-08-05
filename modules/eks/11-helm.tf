@@ -110,6 +110,11 @@ resource "helm_release" "external-dns" {
     name  = "txtOwnerId" #TXT record identifier
     value = "external-dns"
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+    aws_iam_role_policy_attachment.aws_load_balancer_controller_attach
+  ]
 }
 
 resource "aws_iam_role" "external_dns" {

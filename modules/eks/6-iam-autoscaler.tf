@@ -71,6 +71,11 @@ resource "kubernetes_service_account" "cluster_autoscaler" {
       "eks.amazonaws.com/role-arn" = aws_iam_role.eks_cluster_autoscaler.arn
     }
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+
+  ]
 }
 
 resource "kubernetes_cluster_role" "cluster_autoscaler" {
@@ -168,6 +173,10 @@ resource "kubernetes_cluster_role" "cluster_autoscaler" {
     resource_names = ["cluster-autoscaler"]
     verbs      = ["get", "update"]
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+  ]
 }
 
 resource "kubernetes_role" "cluster_autoscaler" {
@@ -192,6 +201,10 @@ resource "kubernetes_role" "cluster_autoscaler" {
     resource_names = ["cluster-autoscaler-status", "cluster-autoscaler-priority-expander"]
     verbs      = ["delete", "get", "update", "watch"]
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+  ]
 }
 
 resource "kubernetes_cluster_role_binding" "cluster_autoscaler" {
@@ -214,6 +227,11 @@ resource "kubernetes_cluster_role_binding" "cluster_autoscaler" {
     name      = "cluster-autoscaler"
     namespace = "kube-system"
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+
+  ]
 }
 
 resource "kubernetes_role_binding" "cluster_autoscaler" {
@@ -237,6 +255,10 @@ resource "kubernetes_role_binding" "cluster_autoscaler" {
     name      = "cluster-autoscaler"
     namespace = "kube-system"
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+  ]
 }
 
 resource "kubernetes_deployment" "cluster_autoscaler" {
@@ -331,6 +353,10 @@ resource "kubernetes_deployment" "cluster_autoscaler" {
       }
     }
   }
+  depends_on = [
+    aws_eks_cluster.eks,
+    aws_eks_node_group.private-nodes,
+  ]
 }
 
 
