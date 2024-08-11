@@ -10,6 +10,24 @@ provider "helm" {
   }
 }
 
+#argocd
+resource "helm_release" "argocd" {
+
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  version          = "6.7.15"
+  namespace        = "argocd"
+  create_namespace = true
+  set {
+    name  = "server.service.type"
+    value = "ClusterIP"
+  }
+
+
+
+  depends_on = [aws_eks_cluster.eks]
+}
 #aws loadbalancer controller
 resource "helm_release" "aws-load-balancer-controller" {
   name = "aws-load-balancer-controller"
@@ -113,7 +131,8 @@ resource "helm_release" "external-dns" {
   depends_on = [
     aws_eks_cluster.eks,
     aws_eks_node_group.private-nodes,
-    aws_iam_role_policy_attachment.aws_load_balancer_controller_attach
+    aws_iam_role_policy_attachment.aws_load_balancer_controller_attach,
+    helm_release.aws-load-balancer-controller
   ]
 }
 

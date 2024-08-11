@@ -31,3 +31,23 @@ output "eks" {
   value = module.eks.eks
 }
 
+module "db" {
+  source = "./modules/db"
+  db_name = "${local.resource_name}-db"
+  vpc_name = local.resource_name
+  db_subnet_1 = "${local.resource_name}-database-${local.az_names[0]}"
+  db_subnet_2 = "${local.resource_name}-database-${local.az_names[1]}"
+  db_engine_version="14.10"
+  db_family="postgres14"
+  db_major_engine_version="14"
+  db_instance_class="db.t3.small"
+  db_multi_az= false
+  kms_key_arn=""
+  db_database_username= "postgres"
+  db_maintenance_window=""
+  db_apply_immediately=true
+  db_force_ssl = false
+  skip_final_snapshot = true
+ 
+}
+
