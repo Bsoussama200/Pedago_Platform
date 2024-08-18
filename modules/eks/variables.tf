@@ -19,4 +19,4 @@ variable "vpc_cidr" {}
 variable "region" {}
 variable "private_subnet_1" {}
 variable "private_subnet_2" {}
-variable "ami_id" {}
+# variable "ami_id" {}

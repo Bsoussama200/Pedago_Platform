@@ -22,3 +22,15 @@ module "cert" {
   validation_record_ttl             = "60"
   allow_validation_record_overwrite = true
 }
+
+# module "cert" {
+#   source                            = "terraform-aws-modules/acm/aws"
+#   version                           = "5.0.0"
+#   domain_name                       = var.domain
+#   subject_alternative_names         = ["*.${var.domain}"]
+#   create_route53_records            = true
+#   wait_for_validation               = true
+#   validate_certificate              = true
+#   validation_method                 = "DNS"
+#   zone_id                           = var.hosted_zone_id
+# }

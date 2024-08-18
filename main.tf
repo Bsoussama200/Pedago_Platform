@@ -11,7 +11,7 @@ module "eks" {
   csi_driver = "v1.33.0-eksbuild.1"
   ##### Nodes Autoscaling desired instance size #####
   instance_types  = "t3.large"
-  ami_id          = "ami-05d018b6c09ba06ab" #amazon-eks-node-al2023-x86_64-standard-1.28
+  # ami_id          = "ami-05d018b6c09ba06ab" #amazon-eks-node-al2023-x86_64-standard-1.28
   desired_size    = 1
   max_size        = 5
   min_size        = 1
@@ -51,3 +51,16 @@ module "db" {
  
 }
 
+module "bastion" {
+  source = "./modules/bastion"
+  vpc_name = local.resource_name
+  bastion_host_name = "${local.resource_name}-bastion"
+  public_subnet_1 = "${local.resource_name}-public-${local.az_names[0]}"
+  ssh_key = var.ssh_key
+}
+
+module "ecr"{
+  source    = "./modules/ecr"
+  ecr_name  = "${local.resource_name}-ecr"
+  eks_nodes_role_arn = module.eks.nodes_role_arn
+}

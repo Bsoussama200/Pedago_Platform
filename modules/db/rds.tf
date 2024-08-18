@@ -1,7 +1,8 @@
 module "db" {
   source                     = "terraform-aws-modules/rds/aws"
   identifier                 = var.db_name
-  version                    = "3.2.0"
+  snapshot_identifier        = "arn:aws:rds:eu-west-3:471112993112:snapshot:complete"
+  version                    = "5.2.0"
   engine                     = "postgres"
   engine_version             = var.db_engine_version
   family                     = var.db_family
@@ -15,7 +16,7 @@ module "db" {
   multi_az                   = var.db_multi_az
   # username                   = var.db_database_username
   # password                   = random_password.password.result
-  name                   = "postgres"
+  db_name                    = "postgres"
   username                   = "iascholar"
   password                   = "password"
   port                       = "5432"

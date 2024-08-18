@@ -2,15 +2,15 @@ provider "aws" {
   region = var.region
 }
 
-terraform {
-  required_version = ">= 0.15"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
+# terraform {
+#   required_version = ">= 0.15"
+#   required_providers {
+#     aws = {
+#       source  = "hashicorp/aws"
+#       version = "~> 3.0"
+#     }
+#   }
+# }
 ###############################create these 2 resources first
 /* resource "aws_s3_bucket" "mybucket" {
     bucket = "cmcloudlab893-info"

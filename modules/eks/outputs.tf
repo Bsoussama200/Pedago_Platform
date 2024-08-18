@@ -24,3 +24,7 @@ output "eks" {
         Launch Template ID                      ${aws_launch_template.dev.id}
     EOF
 }
+output "nodes_role_arn" {
+        value = aws_iam_role.nodes.arn
+  
+}

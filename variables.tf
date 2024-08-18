@@ -8,3 +8,6 @@ variable "environment" {
 variable "cluster_version" {
     default = "1.29"
 }
+variable "ssh_key" {
+    default = "bastion-ssh"
+}
