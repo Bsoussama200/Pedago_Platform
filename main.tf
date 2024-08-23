@@ -63,4 +63,5 @@ module "ecr"{
   source    = "./modules/ecr"
   ecr_name  = "${local.resource_name}-ecr"
   eks_nodes_role_arn = module.eks.nodes_role_arn
+  depends_on = [ module.eks ]
 }
