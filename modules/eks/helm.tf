@@ -137,7 +137,7 @@ resource "helm_release" "external-dns" {
 }
 
 resource "aws_iam_role" "external_dns" {
-  name = "external-dns-dev"
+  name = "external-dns-${terraform.workspace}"
 
   assume_role_policy = <<EOF
 {
