@@ -17,6 +17,12 @@ resource "helm_release" "prometheus_stack" {
     <<EOF
 grafana:
   adminPassword: "admin"
+  datasources:
+    default:
+      type: prometheus
+      url: http://prometheus-operated
+      access: proxy
+      isDefault: true
 
 EOF
   ]

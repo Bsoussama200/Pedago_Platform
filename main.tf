@@ -10,7 +10,7 @@ module "eks" {
   alb_ingress_image_tag = "v2.6.1"
   csi_driver = "v1.33.0-eksbuild.1"
   ##### Nodes Autoscaling desired instance size #####
-  instance_types  = "t3.large"
+  instance_types  = "t3.xlarge"
   # ami_id          = "ami-05d018b6c09ba06ab" #amazon-eks-node-al2023-x86_64-standard-1.28
   desired_size    = 1
   max_size        = 5
@@ -18,8 +18,8 @@ module "eks" {
   max_unavailable = 1
   ##### Route53 Domain #####
   region         = "eu-west-3"
-  domain         = "dev.pedago.ai"
-  hosted_zone_id = "Z049375230K5WH95V9423"
+  domain         = "app.pedago.ai"
+  hosted_zone_id = "Z08694663N8QUN19LJOEF"
   ##### Networking #####
   vpc_cidr         = data.aws_vpc.vpc.cidr_block
   private_subnet_1 = "${local.resource_name}-private-${local.az_names[0]}"

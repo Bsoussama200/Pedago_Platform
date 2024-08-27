@@ -51,7 +51,10 @@ resource "aws_eks_cluster" "eks" {
   name     = var.cluster_name
   version  = var.cluster_version
   role_arn = aws_iam_role.dev.arn
-
+  access_config {    
+    authentication_mode                         = "API_AND_CONFIG_MAP"    
+    bootstrap_cluster_creator_admin_permissions = true  
+  }
   vpc_config {
     subnet_ids = [
       data.aws_subnet.private-a.id,
