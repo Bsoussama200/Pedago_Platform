@@ -10,7 +10,7 @@ module "eks" {
   alb_ingress_image_tag = "v2.6.1"
   csi_driver = "v1.33.0-eksbuild.1"
   ##### Nodes Autoscaling desired instance size #####
-  instance_types  = "t3.xlarge"
+  instance_types  = "t3.large"
   # ami_id          = "ami-05d018b6c09ba06ab" #amazon-eks-node-al2023-x86_64-standard-1.28
   desired_size    = 1
   max_size        = 5
@@ -43,7 +43,7 @@ module "db" {
   db_instance_class="db.t3.small"
   db_multi_az= false
   kms_key_arn=""
-  db_database_username= "postgres"
+  db_database_username= "iascholar"
   db_maintenance_window=""
   db_apply_immediately=true
   db_force_ssl = false

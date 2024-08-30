@@ -8,8 +8,10 @@ resource "aws_instance" "bastion_host" {
     Name = var.bastion_host_name
   }
 
-  security_groups = [
-    aws_security_group.bastion_host_sg.id
-  ]
+  # security_groups = [
+  #   aws_security_group.bastion_host_sg.id
+  # ]
+  
+  vpc_security_group_ids = [aws_security_group.bastion_host_sg.id]
 }
 
